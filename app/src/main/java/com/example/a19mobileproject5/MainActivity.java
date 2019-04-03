@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("첫번째"));
         tabLayout.addTab(tabLayout.newTab().setText("두번째"));
         tabLayout.addTab(tabLayout.newTab().setText("세번째"));
+        tabLayout.addTab(tabLayout.newTab().setText("네번째"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = findViewById(R.id.pager);
