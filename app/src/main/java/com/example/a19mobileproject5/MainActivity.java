@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = findViewById(R.id.container);
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("첫번째"));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_map));
         tabLayout.addTab(tabLayout.newTab().setText("두번째"));
         tabLayout.addTab(tabLayout.newTab().setText("세번째"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
