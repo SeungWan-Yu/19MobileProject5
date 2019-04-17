@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = findViewById(R.id.container);
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("공지").setIcon(R.drawable.ic_assignmen));
+        tabLayout.addTab(tabLayout.newTab().setText("게시판").setIcon(R.drawable.ic_assignmen));
         tabLayout.addTab(tabLayout.newTab().setText("식당").setIcon(R.drawable.ic_dining));
         tabLayout.addTab(tabLayout.newTab().setText("지도").setIcon(R.drawable.ic_map));
         tabLayout.addTab(tabLayout.newTab().setText("즐겨찾기").setIcon(R.drawable.ic_star_border));
