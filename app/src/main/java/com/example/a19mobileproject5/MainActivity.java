@@ -9,13 +9,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.google.android.gms.common.api.GoogleApiClient;
-
 
 public class MainActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
-    private GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("게시판").setIcon(R.drawable.ic_assignmen));
         tabLayout.addTab(tabLayout.newTab().setText("식당").setIcon(R.drawable.ic_dining));
         tabLayout.addTab(tabLayout.newTab().setText("지도").setIcon(R.drawable.ic_map));
+        tabLayout.addTab(tabLayout.newTab().setText("즐겨찾기").setIcon(R.drawable.ic_star_border));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = findViewById(R.id.pager);
