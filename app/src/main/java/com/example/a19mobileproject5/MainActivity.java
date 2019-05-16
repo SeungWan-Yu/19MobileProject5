@@ -24,19 +24,18 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mViewPager = findViewById(R.id.container);
-
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("게시판").setIcon(R.drawable.ic_assignmen));
         tabLayout.addTab(tabLayout.newTab().setText("식당").setIcon(R.drawable.ic_dining));
         tabLayout.addTab(tabLayout.newTab().setText("지도").setIcon(R.drawable.ic_map));
-        tabLayout.addTab(tabLayout.newTab().setText("즐겨찾기").setIcon(R.drawable.ic_star_border));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = findViewById(R.id.pager);
         final PagerAdapter adapter = new PagerAdapter
                 (getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
+
+//        tabLayout.setupWithViewPager(viewPager);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
