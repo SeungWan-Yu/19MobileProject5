@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".WriteActivity"></activity>
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -22,7 +22,9 @@
         -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyCjZxOveu2G0A4YCUcWpQs4nMUeD9weJVk" /> <!-- release key : AIzaSyCU_Zs4Umm6vbbseCSLmrBVRtBfx-yX_WQ -->
+            android:value="AIzaSyCjZxOveu2G0A4YCUcWpQs4nMUeD9weJVk" />
+        <!--release key : AIzaSyCU_Zs4Umm6vbbseCSLmrBVRtBfx-yX_WQ-->
+
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
