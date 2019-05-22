@@ -6,21 +6,33 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.Nullable;
 
 public class TabFragment1 extends Fragment implements View.OnClickListener {
 
     private RecyclerView mMainRecyclerView;
-    private Button main_write_button;
     private MainAdapter mAdapter;
     private List<Board> mBoardList;
+    private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
 
 
     @Override
@@ -31,19 +43,28 @@ public class TabFragment1 extends Fragment implements View.OnClickListener {
 
         view.findViewById(R.id.main_write_button).setOnClickListener(this);
 
-
         mBoardList = new ArrayList<>();
-        mBoardList.add(new Board(null, "반갑습니다 여러분", null,"android"));
-        mBoardList.add(new Board(null, "Hello", null,"server"));
-        mBoardList.add(new Board(null, "OK", null,"java"));
-        mBoardList.add(new Board(null, "안녕하세요", null,"php"));
-        mBoardList.add(new Board(null, "ㅋㅋㅋㅋ ", null,"python"));
 
-        mAdapter = new MainAdapter(mBoardList);
-        mMainRecyclerView.setAdapter(mAdapter);
+        mStore.collection("board")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                for(DocumentChange dc : queryDocumentSnapshots.getDocumentChanges()){
+                    String id = (String) dc.getDocument().getData().get("id");
+                    String title = (String) dc.getDocument().get("title");
+                    String contents = (String) dc.getDocument().get("contents");
+                    String name = (String) dc.getDocument().getData().get("name");
+                    Board data = new Board(id, title, contents, name);
+
+                    mBoardList.add(data);
+                }
+                mAdapter = new MainAdapter(mBoardList);
+                mMainRecyclerView.setAdapter(mAdapter);
+            }
+        });
+
 
         return  view;
-
     }
 
     @Override

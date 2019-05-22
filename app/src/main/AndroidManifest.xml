@@ -29,6 +29,7 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
+        <activity android:name=".WriteActivity" />
         <activity android:name=".LodingActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
