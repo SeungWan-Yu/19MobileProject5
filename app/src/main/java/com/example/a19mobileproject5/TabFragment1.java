@@ -105,7 +105,6 @@ public class TabFragment1 extends Fragment implements View.OnClickListener {
             private TextView mNameTextView;
 
             public MainViewHolder(View itemView) {
-                //sddsaeqwewq
                 super(itemView);
 
                 mTitleTextView = itemView.findViewById(R.id.item_title_text);
