@@ -6,15 +6,23 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.places.AutocompleteFilter;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
+import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -24,11 +32,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
-public class TabFragment3 extends Fragment implements OnMapReadyCallback {
+public class TabFragment3 extends Fragment implements OnMapReadyCallback, View.OnClickListener {
 
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
     private static final int REQUEST_CODE = 101;
+    private FloatingActionButton currnet;
 
     public TabFragment3() {
 
@@ -45,8 +54,29 @@ public class TabFragment3 extends Fragment implements OnMapReadyCallback {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.tab_fragment_3, container, false);
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
         fectcLastLocation();
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
+
+        final TextView txtVw = layout.findViewById(R.id.placeName);
+
+        PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)getActivity().getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment );
+        AutocompleteFilter filter = new AutocompleteFilter.Builder()
+                 .setCountry("KR")
+                 .setTypeFilter(AutocompleteFilter.TYPE_FILTER_CITIES)
+                 .build();
+         autocompleteFragment.setFilter(filter);
+        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener( ){
+            @ Override
+            public   void   onPlaceSelected ( Place place )   {
+                txtVw . setText ( place . getName ( ) ) ;
+            }
+            @ Override
+            public   void   onError ( Status status )   {
+                txtVw . setText ( status . toString ( ) ) ;
+            }
+        } ) ;
+
+        layout.findViewById(R.id.current).setOnClickListener(this);
 
         return layout;
     }
@@ -95,5 +125,10 @@ public class TabFragment3 extends Fragment implements OnMapReadyCallback {
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onClick(View view) {
+        fectcLastLocation();
     }
 }
