@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent min1 = new Intent(this,LodingActivity.class);
+        Intent min1 = new Intent(this, LodingActivity.class);
         startActivity(min1);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -67,5 +67,6 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
-        return super.onOptionsItemSelected(item);    }
+        return super.onOptionsItemSelected(item);
+    }
 }

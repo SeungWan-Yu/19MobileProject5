@@ -6,20 +6,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -47,24 +42,24 @@ public class TabFragment1 extends Fragment implements View.OnClickListener {
 
         mStore.collection("board")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                for(DocumentChange dc : queryDocumentSnapshots.getDocumentChanges()){
-                    String id = (String) dc.getDocument().getData().get("id");
-                    String title = (String) dc.getDocument().get("title");
-                    String contents = (String) dc.getDocument().get("contents");
-                    String name = (String) dc.getDocument().getData().get("name");
-                    Board data = new Board(id, title, contents, name);
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                        for (DocumentChange dc : queryDocumentSnapshots.getDocumentChanges()) {
+                            String id = (String) dc.getDocument().getData().get("id");
+                            String title = (String) dc.getDocument().get("title");
+                            String contents = (String) dc.getDocument().get("contents");
+                            String name = (String) dc.getDocument().getData().get("name");
+                            Board data = new Board(id, title, contents, name);
 
-                    mBoardList.add(data);
-                }
-                mAdapter = new MainAdapter(mBoardList);
-                mMainRecyclerView.setAdapter(mAdapter);
-            }
-        });
+                            mBoardList.add(data);
+                        }
+                        mAdapter = new MainAdapter(mBoardList);
+                        mMainRecyclerView.setAdapter(mAdapter);
+                    }
+                });
 
 
-        return  view;
+        return view;
     }
 
     @Override
@@ -99,7 +94,7 @@ public class TabFragment1 extends Fragment implements View.OnClickListener {
             return mBoardList.size();
         }
 
-        class MainViewHolder extends  RecyclerView.ViewHolder{
+        class MainViewHolder extends RecyclerView.ViewHolder {
 
             private TextView mTitleTextView;
             private TextView mNameTextView;
