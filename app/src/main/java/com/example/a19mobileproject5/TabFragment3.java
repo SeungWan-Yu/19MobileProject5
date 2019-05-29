@@ -37,7 +37,6 @@ public class TabFragment3 extends Fragment implements OnMapReadyCallback, View.O
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
     private static final int REQUEST_CODE = 101;
-    private FloatingActionButton currnet;
 
     public TabFragment3() {
 
@@ -54,7 +53,6 @@ public class TabFragment3 extends Fragment implements OnMapReadyCallback, View.O
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.tab_fragment_3, container, false);
 
-        fectcLastLocation();
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
 
         final TextView txtVw = layout.findViewById(R.id.placeName);
@@ -76,7 +74,13 @@ public class TabFragment3 extends Fragment implements OnMapReadyCallback, View.O
             }
         } ) ;
 
-        layout.findViewById(R.id.current).setOnClickListener(this);
+        final FloatingActionButton fac = layout.findViewById(R.id.current);
+        fac.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fectcLastLocation();
+            }
+        });
 
         return layout;
     }
@@ -93,8 +97,8 @@ public class TabFragment3 extends Fragment implements OnMapReadyCallback, View.O
             public void onSuccess(Location location) {
                 if (location != null){
                     currentLocation = location;
-                    Toast.makeText(getActivity(),currentLocation.getLatitude()
-                    +""+currentLocation.getLongitude(),Toast.LENGTH_SHORT).show();
+                    /*Toast.makeText(getActivity(),currentLocation.getLatitude()
+                    +""+currentLocation.getLongitude(),Toast.LENGTH_SHORT).show();*/
 
                     SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
                             .findFragmentById(R.id.map);
@@ -107,11 +111,13 @@ public class TabFragment3 extends Fragment implements OnMapReadyCallback, View.O
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
+        fectcLastLocation();
+
         LatLng latLng = new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions().position(latLng)
                 .title("현재 위치");
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        googleMap.animateCamera(CameraUpdateFactory.zoomTo(13));
+        googleMap.animateCamera(CameraUpdateFactory.zoomTo(10));
         googleMap.addMarker(markerOptions);
 
     }
@@ -129,6 +135,6 @@ public class TabFragment3 extends Fragment implements OnMapReadyCallback, View.O
 
     @Override
     public void onClick(View view) {
-        fectcLastLocation();
+
     }
 }

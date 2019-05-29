@@ -33,11 +33,11 @@
         app:layout_constraintTop_toTopOf = "parent"  />
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.SupportMapFragment" />
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/current"
@@ -48,10 +48,39 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginEnd="0dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="106dp"
-        android:src="@drawable/googleg_disabled_color_18"
+        android:layout_marginBottom="0dp"
+        android:src="@drawable/places_ic_search"
+        app:backgroundTint="#AAAAAA" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/current2"
+        android:layout_width="41dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="42dp"
+        android:src="@drawable/plus"
+        app:backgroundTint="#AAAAAA" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/current3"
+        android:layout_width="41dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="84dp"
+        android:src="@drawable/aaa"
         app:backgroundTint="#AAAAAA" />
 
 </RelativeLayout>
