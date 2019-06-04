@@ -31,15 +31,17 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name=".WriteActivity" />
-        <activity android:name=".LodingActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".LodingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".WriteActivity" />
     </application>
 
 </manifest>

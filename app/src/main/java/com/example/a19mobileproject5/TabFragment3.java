@@ -84,6 +84,8 @@ public class TabFragment3 extends Fragment implements OnMapReadyCallback, View.O
             }
         });
 
+        fectcLastLocation();
+
         final FloatingActionButton fac = layout.findViewById(R.id.current);
         fac.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,13 +121,11 @@ public class TabFragment3 extends Fragment implements OnMapReadyCallback, View.O
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        fectcLastLocation();
-
         LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions().position(latLng)
                 .title("현재 위치");
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        googleMap.animateCamera(CameraUpdateFactory.zoomTo(10));
+//        googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,15));
         googleMap.addMarker(markerOptions);
 
     }
