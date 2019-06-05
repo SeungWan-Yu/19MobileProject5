@@ -2,6 +2,8 @@ package com.example.a19mobileproject5;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,13 +11,12 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.EditText;
 
-import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -27,17 +28,18 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
-import com.google.android.libraries.places.api.model.Place;
-import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
-import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 
-import java.util.Arrays;
+import java.io.IOException;
+import java.util.List;
 
 public class TabFragment3 extends Fragment implements OnMapReadyCallback, View.OnClickListener {
 
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
     private static final int REQUEST_CODE = 101;
+    EditText editPlace;
+    Button btnSearch;
+
 
     public TabFragment3() {
 
@@ -55,13 +57,17 @@ public class TabFragment3 extends Fragment implements OnMapReadyCallback, View.O
         View layout = inflater.inflate(R.layout.tab_fragment_3, container, false);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
+        editPlace = layout.findViewById(R.id.editPlace);
+        btnSearch = layout.findViewById(R.id.btnSearch);
 
-        final TextView txtVw = layout.findViewById(R.id.placeName);
+
+//        final TextView txtVw = layout.findViewById(R.id.placeName);
 
         if (!Places.isInitialized()) {
             Places.initialize(requireContext(), "AIzaSyCjZxOveu2G0A4YCUcWpQs4nMUeD9weJVk");
         }
 
+        /*자동완성 검색. API요청 제한
         AutocompleteSupportFragment autocompleteFragment = (AutocompleteSupportFragment)
                 getChildFragmentManager().findFragmentById(R.id.autocomplete_fragment);
 
@@ -82,7 +88,7 @@ public class TabFragment3 extends Fragment implements OnMapReadyCallback, View.O
                 Log.i("Tab3", "An error occurred: " + status);
                 txtVw.setText(status.toString());
             }
-        });
+        });*/
 
         fectcLastLocation();
 
@@ -94,7 +100,12 @@ public class TabFragment3 extends Fragment implements OnMapReadyCallback, View.O
             }
         });
 
+
         return layout;
+    }
+
+    public void search(){
+
     }
 
     private void fectcLastLocation() {
@@ -119,7 +130,7 @@ public class TabFragment3 extends Fragment implements OnMapReadyCallback, View.O
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(final GoogleMap googleMap) {
 
         LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions().position(latLng)
@@ -127,6 +138,26 @@ public class TabFragment3 extends Fragment implements OnMapReadyCallback, View.O
 //        googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,15));
         googleMap.addMarker(markerOptions);
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                search();
+                String place = editPlace.getText().toString();
+                Geocoder coder = new Geocoder(getActivity());
+                List<Address> list = null;
+                try{
+                    list = coder.getFromLocationName(place,1);
+                } catch (IOException e){
+                    e.printStackTrace();
+                }
+                Address addr = list.get(0);
+                double lat = addr.getLatitude();
+                double log = addr.getLongitude();
+                LatLng geoPoint = new LatLng(lat,log);
+                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(geoPoint,15));
+            }
+        });
 
     }
 
