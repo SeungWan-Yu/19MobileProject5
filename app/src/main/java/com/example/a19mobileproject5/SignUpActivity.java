@@ -68,7 +68,7 @@ public class SignUpActivity extends AppCompatActivity {
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다", Toast.LENGTH_LONG).show();
 
-                                    myStartActivity(MainActivity.class);
+                                    myStartActivity(LoginActivity.class);
                                 } else {
                                     if(task.getException() != null){
 //                                        showToast(SignUpActivity.this, task.getException().toString());
