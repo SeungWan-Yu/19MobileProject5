@@ -25,7 +25,6 @@ public class SignUpActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         findViewById(R.id.signUpButton).setOnClickListener(onClickListener);
-//        findViewById(R.id.gotoLoginButton).setOnClickListener(onClickListener);
     }
 
     @Override
@@ -43,9 +42,6 @@ public class SignUpActivity extends AppCompatActivity {
                 case R.id.signUpButton:
                     signUp();
                     break;
-//                case R.id.gotoLoginButton:
-//                    myStartActivity(MainActivity.class);
-//                    break;
             }
         }
     };
@@ -57,13 +53,10 @@ public class SignUpActivity extends AppCompatActivity {
 
         if(email.length() > 0 && password.length() > 0 && passwordCheck.length() > 0){
             if(password.equals(passwordCheck)){
-//                final RelativeLayout loaderLayout = findViewById(R.id.loaderLyaout);
-//                loaderLayout.setVisibility(View.VISIBLE);
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-//                                loaderLayout.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다", Toast.LENGTH_LONG).show();
