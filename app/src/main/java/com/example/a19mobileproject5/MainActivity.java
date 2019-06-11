@@ -1,7 +1,6 @@
 package com.example.a19mobileproject5;
 
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -29,11 +28,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("착한가격업소");
 
-
         TabLayout tabLayout = findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("게시판").setIcon(R.drawable.ic_assignmen));
-        tabLayout.addTab(tabLayout.newTab().setText("식당").setIcon(R.drawable.ic_dining));
-        tabLayout.addTab(tabLayout.newTab().setText("지도").setIcon(R.drawable.ic_map));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_assignmen));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_dining));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_map));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = findViewById(R.id.pager);
@@ -41,9 +39,6 @@ public class MainActivity extends AppCompatActivity {
                 (getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
 
-
-
-        //tabLayout.setupWithViewPager(viewPager);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -72,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-                Toast.makeText(getApplicationContext(), "로그아웃", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "로그아웃 버튼 클릭됨", Toast.LENGTH_LONG).show();
                 mAuth.signOut();
                 myStartActivity(LoginActivity.class);
 

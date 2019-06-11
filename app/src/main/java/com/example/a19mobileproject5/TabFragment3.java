@@ -55,11 +55,11 @@ public class TabFragment3 extends Fragment implements OnMapReadyCallback, View.O
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.tab_fragment_3, container, false);
+        View view = inflater.inflate(R.layout.tab_fragment_3, container, false);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
-        editPlace = layout.findViewById(R.id.editPlace);
-        btnSearch = layout.findViewById(R.id.btnSearch);
+        editPlace = view.findViewById(R.id.editPlace);
+        btnSearch = view.findViewById(R.id.btnSearch);
 
 
         if (!Places.isInitialized()) {
@@ -69,7 +69,7 @@ public class TabFragment3 extends Fragment implements OnMapReadyCallback, View.O
 
         fectcLastLocation();
 
-        final FloatingActionButton fac = layout.findViewById(R.id.current);
+        final FloatingActionButton fac = view.findViewById(R.id.current);
         fac.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,8 +77,7 @@ public class TabFragment3 extends Fragment implements OnMapReadyCallback, View.O
             }
         });
 
-
-        return layout;
+        return view;
     }
 
 
@@ -124,10 +123,10 @@ public class TabFragment3 extends Fragment implements OnMapReadyCallback, View.O
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Address addr = list.get(0);
-                if (addr == null) {
+                if (list.size() < 1) {
                     Toast.makeText(getActivity(), "검색된 위치가 없습니다", Toast.LENGTH_LONG).show();
                 } else {
+                    Address addr = list.get(0);
                     double lat = addr.getLatitude();
                     double log = addr.getLongitude();
                     LatLng geoPoint = new LatLng(lat, log);

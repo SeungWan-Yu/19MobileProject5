@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.a19mobileproject5">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,7 +13,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        tools:ignore="GoogleAppIndexingWarning">
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -24,8 +26,12 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCjZxOveu2G0A4YCUcWpQs4nMUeD9weJVk" />
+            android:value="AIzaSyDC4mmDbY4bKVT-lmELScGjgTHd_HNsU-Q" />
         <!--release key : AIzaSyCU_Zs4Umm6vbbseCSLmrBVRtBfx-yX_WQ-->
+        <!--JC Debug Key : AIzaSyAz8_9lTO_gaw1G0I71Y42AjkF_LQCpr5k-->
+        <!--PC Debug Key : AIzaSyDC4mmDbY4bKVT-lmELScGjgTHd_HNsU-Q-->
+        <!--Debug Key : AIzaSyCjZxOveu2G0A4YCUcWpQs4nMUeD9weJVk-->
+        <!--Release Key : AIzaSyCU_Zs4Umm6vbbseCSLmrBVRtBfx-yX_WQ-->
 
         <uses-library
             android:name="org.apache.http.legacy"

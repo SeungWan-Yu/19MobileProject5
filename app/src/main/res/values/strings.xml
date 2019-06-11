@@ -2,4 +2,5 @@
     <string name="app_name">19MobileProject5</string>
     <string name="title_activity_maps">Map</string>
     <string name="no_place_selected">No Place selected</string>
+    <string name="logout">로그아웃</string>
 </resources>
