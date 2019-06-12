@@ -36,6 +36,7 @@ public class TabFragment1 extends Fragment implements View.OnClickListener {
 
         mMainRecyclerView = view.findViewById(R.id.main_recycler_view);
 
+
         view.findViewById(R.id.main_write_button).setOnClickListener(this);
 
         mBoardList = new ArrayList<>();
@@ -87,6 +88,7 @@ public class TabFragment1 extends Fragment implements View.OnClickListener {
             Board data = mBoardList.get(position);
             holder.mTitleTextView.setText(data.getTitle());
             holder.mNameTextView.setText(data.getName());
+
         }
 
         @Override

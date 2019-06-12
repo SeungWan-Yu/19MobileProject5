@@ -1,11 +1,11 @@
 package com.example.a19mobileproject5;
 
-import java.util.List;
+import com.example.a19mobileproject5.models.StoresModels;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 
 interface RequestInterface {
-    @GET("/")
-    Call<List<Stores>> getStoresJson();
+    @GET("1/5/")
+    Call<StoresModels> getStoresJson();
 }

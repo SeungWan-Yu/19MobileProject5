@@ -9,17 +9,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.a19mobileproject5.models.Row;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class StoresAdaptar extends RecyclerView.Adapter<StoresAdaptar.ViewHolder> {
 
-    private ArrayList<Stores> stores = new ArrayList<>();
+    private List<Row> storesModels;
     private Context context;
 
-    public StoresAdaptar(Context context, ArrayList<Stores> stores){
-        this.stores = stores;
+    public StoresAdaptar(Context context, List<Row> stores){
+        this.storesModels = stores;
         this.context=context;
     }
 
@@ -31,15 +32,15 @@ public class StoresAdaptar extends RecyclerView.Adapter<StoresAdaptar.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StoresAdaptar.ViewHolder viewHolder, int i) {
-        viewHolder.store_name.setText(stores.get(i).getsHNAME());
-        viewHolder.store_desc.setText(stores.get(i).getsHINFO());
-        Picasso.get().load(stores.get(i).getsHPHOTO).into(viewHolder.store_image);
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+        viewHolder.store_name.setText(storesModels.get(i).getSHNAME());
+        viewHolder.store_desc.setText(storesModels.get(i).getSHINFO().trim());
+        Picasso.get().load(storesModels.get(i).getSHPHOTO()).into(viewHolder.store_image);
     }
 
     @Override
     public int getItemCount() {
-        return stores.size();
+        return storesModels.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

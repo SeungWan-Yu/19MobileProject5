@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_assignmen));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_dining));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_shopping));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_map));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 

@@ -1,7 +1,6 @@
 package com.example.a19mobileproject5;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,8 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.a19mobileproject5.models.StoresModels;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,7 +19,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TabFragment2 extends Fragment {
 
-    ArrayList<Stores> stores = new ArrayList<>();
     private StoresAdaptar storesAdaptar;
     private RecyclerView stores_recyclerview;
 
@@ -38,26 +35,25 @@ public class TabFragment2 extends Fragment {
 
     private void getStoresRespons() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://openapi.seoul.go.kr:8088/526747566773657534335a636f7853/json/ListPriceModelStoreService/1/10/")
+                .baseUrl("http://openapi.seoul.go.kr:8088/526747566773657534335a636f7853/json/ListPriceModelStoreService/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
-        Call<List<Stores>> call = requestInterface.getStoresJson();
-        call.enqueue(new Callback<List<Stores>>() {
+        Call<StoresModels> call = requestInterface.getStoresJson();
+        call.enqueue(new Callback<StoresModels>() {
             @Override
-            public void onResponse(@NonNull Call<List<Stores>> call, @NonNull Response<List<Stores>> response) {
-                assert response.body() != null;
-//                stores = new ArrayList<>(Objects.requireNonNull(response).body());
-                storesAdaptar=new StoresAdaptar(getActivity(),stores);
+            public void onResponse(Call<StoresModels> call, Response<StoresModels> response) {
+                storesAdaptar = new StoresAdaptar(getActivity(), response.body().getListPriceModelStoreService().getRow());
                 stores_recyclerview.setAdapter(storesAdaptar);
                 Toast.makeText(getActivity(), "성공하였습니다", Toast.LENGTH_LONG).show();
             }
 
             @Override
-            public void onFailure(Call<List<Stores>> call, Throwable t) {
+            public void onFailure(Call<StoresModels> call, Throwable t) {
                 Toast.makeText(getActivity(), "실패다", Toast.LENGTH_LONG).show();
             }
         });
+
     }
 }

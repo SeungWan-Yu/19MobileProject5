@@ -26,7 +26,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDC4mmDbY4bKVT-lmELScGjgTHd_HNsU-Q" />
+            android:value="AIzaSyCjZxOveu2G0A4YCUcWpQs4nMUeD9weJVk" />
         <!--release key : AIzaSyCU_Zs4Umm6vbbseCSLmrBVRtBfx-yX_WQ-->
         <!--JC Debug Key : AIzaSyAz8_9lTO_gaw1G0I71Y42AjkF_LQCpr5k-->
         <!--PC Debug Key : AIzaSyDC4mmDbY4bKVT-lmELScGjgTHd_HNsU-Q-->
