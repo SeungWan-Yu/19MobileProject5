@@ -9,7 +9,7 @@
  - 내용을 다 작성한 후 등록을 누르면 내가 적은 제목과 별명이 게시판에 추가된 걸 확인할 수 있다.
 #### 사용 코드 
 ```
-> WriteActivity <br> private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
+> **WriteActivity** <br> private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
 ```
  
 ## 3-2.프래그먼트 페이지2<br>
