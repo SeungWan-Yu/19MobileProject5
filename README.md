@@ -27,7 +27,7 @@ id = mStore.collection("board").document().getId();
 ```
  
 ## 3-2.프래그먼트 페이지2<br>
-<img src="https://user-images.githubusercontent.com/48502969/59731176-16f2f080-9280-11e9-9e1a-b5708a3f037d.png" width="300" height="600">
+<img src="https://user-images.githubusercontent.com/48502969/59731176-16f2f080-9280-11e9-9e1a-b5708a3f037d.png" "width="300" height="600">
 ### 리스트로 업소현황, 정보<br>
 ## 3-3.프래그먼트 페이지3<br>
 <div display: inline-block;>
