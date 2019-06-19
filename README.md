@@ -1,5 +1,7 @@
 # 서울시 착한 가격 업소 정보<br>
 # 1.로그인 페이지<br><br>
+ - Import a HTML file and watch it magically convert to Markdown
+  - Drag and drop images (requires your Dropbox account be linked)
 # 2.로그인 페이지<br>
 # 2-1.회원가입 페이지<br><br>
 # 3-1.프래그먼트 페이지1<br>
