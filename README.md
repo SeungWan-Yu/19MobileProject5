@@ -10,6 +10,7 @@
 #### 사용 코드 
 ```
 private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
+ ...
 id = mStore.collection("board").document().getId();
 
         Map<String, Object> post = new HashMap<>();
@@ -17,6 +18,7 @@ id = mStore.collection("board").document().getId();
         post.put("title", mWriteTitleText.getText().toString());
         post.put("contents", mWriteContentsText.getText().toString());
         post.put("name", mWriteNameText.getText().toString());
+        ...
 ```
  
 ## 3-2.프래그먼트 페이지2<br>
