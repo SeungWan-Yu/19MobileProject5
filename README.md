@@ -15,9 +15,9 @@
 
 -로그인
 
-private void login() {
-        String email = ((EditText) findViewById(R.id.emailEditText)).getText().toString();
-        String password = ((EditText) findViewById(R.id.passwordEditText)).getText().toString();
+        private void login() {
+                String email = ((EditText) findViewById(R.id.emailEditText)).getText().toString();
+                String password = ((EditText) findViewById(R.id.passwordEditText)).getText().toString();
 
         if (email.length() > 0 && password.length() > 0) {
             mAuth.signInWithEmailAndPassword(email, password)
@@ -41,10 +41,10 @@ private void login() {
     
 -회원가입
 
-private void signUp() {
-        String email = ((EditText)findViewById(R.id.emailEditText)).getText().toString();
-        String password = ((EditText)findViewById(R.id.passwordEditText)).getText().toString();
-        String passwordCheck = ((EditText)findViewById(R.id.passwordCheckEditText)).getText().toString();
+        private void signUp() {
+                String email = ((EditText)findViewById(R.id.emailEditText)).getText().toString();
+                String password = ((EditText)findViewById(R.id.passwordEditText)).getText().toString();
+                String passwordCheck = ((EditText)findViewById(R.id.passwordCheckEditText)).getText().toString();
 
         if(email.length() > 0 && password.length() > 0 && passwordCheck.length() > 0){
             if(password.equals(passwordCheck)){
@@ -58,18 +58,17 @@ private void signUp() {
                                     myStartActivity(LoginActivity.class);
                                 } else {
                                     if(task.getException() != null){
-//                                        showToast(SignUpActivity.this, task.getException().toString());
+                                            }
+                                        }
                                     }
-                                }
-                            }
-                        });
-            }else{
-                Toast.makeText(getApplicationContext(), "비밀번호가 일치하지 않습니다.", Toast.LENGTH_LONG).show();
+                                });
+                    }else{
+                        Toast.makeText(getApplicationContext(), "비밀번호가 일치하지 않습니다.", Toast.LENGTH_LONG).show();
+                    }
+                }else {
+                    Toast.makeText(getApplicationContext(), "이메일 또는 비밀번호를 입력해 주세요.", Toast.LENGTH_LONG).show();
+                }
             }
-        }else {
-            Toast.makeText(getApplicationContext(), "이메일 또는 비밀번호를 입력해 주세요.", Toast.LENGTH_LONG).show();
-        }
-    }
 ## 3-1.프래그먼트 페이지1<br>
 <div display: inline-block;>
  <img src="https://user-images.githubusercontent.com/48502969/59731970-53741b80-9283-11e9-8219-cfb3831814fd.png" width="250" height="500">
@@ -105,11 +104,11 @@ private void signUp() {
 
 - 파싱된 데이터를 불러오와 리사이클러뷰에 보여주는 
 
-private void getStoresRespons() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://openapi.seoul.go.kr:8088/526747566773657534335a636f7853/json/ListPriceModelStoreService/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        private void getStoresRespons() {
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("http://openapi.seoul.go.kr:8088/526747566773657534335a636f7853/json/ListPriceModelStoreService/")
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
 
         RequestInterface requestInterface = retrofit.create(RequestInterface.class);
         Call<StoresModels> call = requestInterface.getStoresJson();
@@ -145,18 +144,18 @@ private void getStoresRespons() {
 
 -현재위치를 불러오는 기능.
 
-private void fectcLastLocation() {
-        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(getActivity(), new String[]
-                    {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
-            return;
-        }
-        final Task<Location> task = fusedLocationProviderClient.getLastLocation();
-        task.addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if (location != null) {
-                    currentLocation = location;
+        private void fectcLastLocation() {
+                if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(getActivity(), new String[]
+                            {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
+                    return;
+                }
+                final Task<Location> task = fusedLocationProviderClient.getLastLocation();
+                task.addOnSuccessListener(new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        if (location != null) {
+                            currentLocation = location;
 
                     SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
                             .findFragmentById(R.id.map);
