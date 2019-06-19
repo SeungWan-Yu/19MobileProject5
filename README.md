@@ -1,6 +1,6 @@
 # 서울시 착한 가격 업소 정보<br>
 ## 1.로그인 페이지
-<img src="https://user-images.githubusercontent.com/48502969/59730242-9aaade00-927c-11e9-9339-50ddab03949f.png" width="300" height="300">
+<img src="https://user-images.githubusercontent.com/48502969/59730242-9aaade00-927c-11e9-9339-50ddab03949f.png" width="300" height="800">
 ## 2.로그인 페이지<br>
 ## 2-1.회원가입 페이지<br><br>
 ## 3-1.프래그먼트 페이지1<br>
