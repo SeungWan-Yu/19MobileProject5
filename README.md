@@ -10,8 +10,10 @@
  <img src="https://user-images.githubusercontent.com/48502969/59731964-4ce5a400-9283-11e9-959d-d2eb097a3768.png" width="250" height="500">
  </div>
 ### 파이어베이스 게시판
+
  - 게시판 오른쪽 하단에 있는 작성 버튼을 클릭하여 게시판에 올릴 글을 작성한다
  - 내용을 다 작성한 후 등록을 누르면 내가 적은 제목과 별명이 게시판에 추가된 걸 확인할 수 있다.
+ 
 #### 사용 코드 
 
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
