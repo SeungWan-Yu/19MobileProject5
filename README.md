@@ -9,6 +9,7 @@
  <img src="https://user-images.githubusercontent.com/48502969/59731969-4fe09480-9283-11e9-9de2-80d7763d6c46.png" width="250" height="500">
  <img src="https://user-images.githubusercontent.com/48502969/59731964-4ce5a400-9283-11e9-959d-d2eb097a3768.png" width="250" height="500">
  </div>
+ 
 ### 파이어베이스 게시판
 
  - 게시판 오른쪽 하단에 있는 작성 버튼을 클릭하여 게시판에 올릴 글을 작성한다
