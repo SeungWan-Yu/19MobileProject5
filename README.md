@@ -1,12 +1,15 @@
 # 서울시 착한 가격 업소 정보<br><br>
 ## 1.로그인 페이지
-## 2.회원가입 페이지<br><br>
+## 2.회원가입 페이지
+
 <div display: inline-block;>
-<p><img src="https://user-images.githubusercontent.com/48502969/59730242-9aaade00-927c-11e9-9339-50ddab03949f.png" width="300" height="600" ></p>
-<p><img src="https://user-images.githubusercontent.com/48502969/59731171-15292d00-9280-11e9-90a8-da1a20789c22.png" width="300" height="600"></p>
+<img src="https://user-images.githubusercontent.com/48502969/59730242-9aaade00-927c-11e9-9339-50ddab03949f.png" width="300" height="600">
+<img src="https://user-images.githubusercontent.com/48502969/59731171-15292d00-9280-11e9-90a8-da1a20789c22.png" width="300" height="600">
 </div>
 
 ### 파이어베이스 사용<br>
+
+
 -로그인 기능은 구글API의 파이어베이스를 이용하여 구현하였습니다.
 
 -회원가입시 파이어베이스에 등록이 되며 로그인시에 저장된 가입 정보를 불러와 로그인이 되게 하였습니다.
@@ -97,6 +100,7 @@
  
 ## 3-2.프래그먼트 페이지2<br>
 <img src="https://user-images.githubusercontent.com/48502969/59731176-16f2f080-9280-11e9-9e1a-b5708a3f037d.png" width="300" height="600">
+
 ### 리스트로 업소현황, 정보를 가져옵니다.<br>
 - 서울 열린 데이터 광장의 openAPI를 이용하여 뿌려주는 데이터를 파싱, 리사이클러뷰에 불러온 데이터를 보여줍니다.
 
@@ -137,7 +141,6 @@
 
 - 프래그먼트3은 googleMaps API를 이용하였습니다.
 - 처음 페이지를 불러오면 현재 위치값을 가져와 표시하고 플로팅 버튼을 통해서도 현재위치값을 가져올 수 있습니다.
-
 - 검색기능은 지오코딩을 이용하여 위치를 입력하였을때 좌표값으로 변환, 카메라를 이동하게 하였습니다.
 
 #### 사용 코드<br>
