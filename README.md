@@ -1,8 +1,10 @@
-# 서울시 착한 가격 업소 정보<br>
+# 서울시 착한 가격 업소 정보<br><br>
 ## 1.로그인 페이지
 <p><img src="https://user-images.githubusercontent.com/48502969/59730242-9aaade00-927c-11e9-9339-50ddab03949f.png" width="300" height="600" ></p>
 ## 2.회원가입 페이지<br><br>
 <p><img src="https://user-images.githubusercontent.com/48502969/59731171-15292d00-9280-11e9-90a8-da1a20789c22.png" width="300" height="600"></p>
+### 파이어베이스 사용
+-로그인 기능은 구글API의 파이어베이스를 이용하여 구현하였습니다. 
 ## 3-1.프래그먼트 페이지1<br>
 <div display: inline-block;>
  <img src="https://user-images.githubusercontent.com/48502969/59731970-53741b80-9283-11e9-8219-cfb3831814fd.png" width="250" height="500">
