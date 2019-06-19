@@ -9,8 +9,14 @@
  - 내용을 다 작성한 후 등록을 누르면 내가 적은 제목과 별명이 게시판에 추가된 걸 확인할 수 있다.
 #### 사용 코드 
 ```
-WriteActivity
 private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
+id = mStore.collection("board").document().getId();
+
+        Map<String, Object> post = new HashMap<>();
+        post.put("id", id);
+        post.put("title", mWriteTitleText.getText().toString());
+        post.put("contents", mWriteContentsText.getText().toString());
+        post.put("name", mWriteNameText.getText().toString());
 ```
  
 ## 3-2.프래그먼트 페이지2<br>
