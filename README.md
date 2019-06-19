@@ -9,26 +9,29 @@
  <img src="https://user-images.githubusercontent.com/48502969/59731969-4fe09480-9283-11e9-9de2-80d7763d6c46.png" width="250" height="500">
  <img src="https://user-images.githubusercontent.com/48502969/59731964-4ce5a400-9283-11e9-959d-d2eb097a3768.png" width="250" height="500">
  </div>
- 
 ### 파이어베이스 게시판
-
  - 게시판 오른쪽 하단에 있는 작성 버튼을 클릭하여 게시판에 올릴 글을 작성한다
  - 내용을 다 작성한 후 등록을 누르면 내가 적은 제목과 별명이 게시판에 추가된 걸 확인할 수 있다.
- 
 #### 사용 코드 
-
-    private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
-                           ...
-    id = mStore.collection("board").document().getId();
+```
+private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
+ ...
+id = mStore.collection("board").document().getId();
 
         Map<String, Object> post = new HashMap<>();
         post.put("id", id);
         post.put("title", mWriteTitleText.getText().toString());
         post.put("contents", mWriteContentsText.getText().toString());
         post.put("name", mWriteNameText.getText().toString());
-                            ...
+        ...
+```
  
 ## 3-2.프래그먼트 페이지2<br>
+<img src="https://user-images.githubusercontent.com/48502969/59731176-16f2f080-9280-11e9-9e1a-b5708a3f037d.png" width="300" height="600">
 ### 리스트로 업소현황, 정보<br>
 ## 3-3.프래그먼트 페이지3<br>
+<div display: inline-block;>
+<img src="https://user-images.githubusercontent.com/48502969/59731192-1e19fe80-9280-11e9-977c-b25a1c7c856c.png" "width="300" height="600">
+<img src="https://user-images.githubusercontent.com/48502969/59731194-1fe3c200-9280-11e9-8dd1-62ad97f7d6a4.png" "width="300" height="600">
+</div>
 ### 지도, 검색, 현황<br>
